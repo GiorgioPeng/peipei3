@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  data() {
+    return {
+      transitionName: ""
+    };
+  },
+  watch: {
+    //使用watch 监听$router的变化
+    $route(to, from) {
+      //如果to索引大于from索引,判断为前进状态,反之则为后退状态
+      if (to.meta.index > from.meta.index) {
+        //设置动画名称
+        this.transitionName = "slide-left";
+      } else {
+        this.transitionName = "slide-right";
+      }
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -23,6 +36,40 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.radius {
+  border-radius: 10px;
+}
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 30%, 0);
+  transform-origin: bottom center;
+  position: absolute;
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 20%, 0);
+  transform-origin: bottom center;
+  position: absolute;
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 20%, 0);
+  transform-origin: bottom center;
+  position: absolute;
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 20%, 0);
+  transform-origin: bottom center;
+  position: absolute;
 }
 </style>
