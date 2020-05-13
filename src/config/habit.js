@@ -30,7 +30,7 @@ export const habit1ConfigArr = [
 
 export const habit2ConfigArr = [
     {
-        title: "您是否有抽烟的习惯",
+        title: "您是否讨厌抽烟行为",
         model: "smoke",
         weight: "smokeWeight",
         type: "radio",

@@ -5,7 +5,7 @@
     <div v-if="data.type === 'time'" class="time-contaienr" :style="itemObj">
       <div
         class="selected-time"
-        @click="showPicker = true;"
+        @click="showPicker = true,isNight=data.model;"
       >{{!$store.state[data.model] ? '请选择时间' : $store.state[data.model] }}</div>
     </div>
     <!-- radio选择 -->
@@ -38,10 +38,16 @@
     <!-- 一左一右两个actionsheet -->
     <div class="two-action-sheet-container" v-if="data.type === 'twoTime'" :style="itemObj">
       <div
-        @click="showNumberPicker = true;activeIndex = 0"
+        @click="
+          showNumberPicker = true;
+          activeIndex = 0;
+          numberArr=Array.from({length: 28}, (v, i) => i>=17?i:undefined).filter(i=>i!==undefined);"
       >{{!$store.state[data.model][0] ? '请选择' : $store.state[data.model][0] }}</div>
       <div
-        @click="showNumberPicker = true;activeIndex = 1"
+        @click="
+          showNumberPicker = true;
+          activeIndex = 1;
+          numberArr=Array.from({length: 31}, (v, i) => i>=23?i:undefined).filter(i=>i!==undefined);"
       >{{!$store.state[data.model][1] ? '请选择' : $store.state[data.model][1] }}</div>
     </div>
     <!-- 爱好选择 -->
@@ -63,7 +69,12 @@
     </div>
     <!-- timepicker -->
     <van-popup v-model="showPicker" position="bottom">
-      <van-datetime-picker type="time" @confirm="onConfirm" @cancel="showPicker = false" />
+      <van-picker
+        show-toolbar
+        :columns="isNight==='weakUpTime'?times1:times2"
+        @confirm="onConfirm"
+        @cancel="showPicker = false"
+      />
     </van-popup>
     <!-- Numberpicker -->
     <van-popup v-model="showNumberPicker" position="bottom">
@@ -79,7 +90,7 @@
       <van-slider
         bar-height="4px"
         active-color="#a2d8e6"
-        :max="50"
+        :max="5"
         v-model="$store.state[data.weight]"
       >
         <template #button>
@@ -104,12 +115,28 @@ export default {
     showNumberPicker: false,
     numberArr: [],
     activeIndex: 0,
-    itemObj: {}
+    itemObj: {},
+    isNight: "",
+    times1: [
+      "6:30之前",
+      "6:30-7:00",
+      "7:00-8:00",
+      "8:00-9:00",
+      "9:00-10:00",
+      "10:00之后"
+    ],
+    times2: [
+      "21:00之前",
+      "21:00-22:00",
+      "22:00-23:00",
+      "23:00-24:00",
+      "24:00之后"
+    ]
   }),
   created() {
-    for (let i = 16; i <= 28; i++) {
-      this.numberArr.push(i, i + 0.5);
-    }
+    // for (let i = 16; i <= 28; i++) {
+    //   this.numberArr.push(i);
+    // }
     let position = {};
     // let path = window.location.pathname;
     // if (path === "/hobby") {

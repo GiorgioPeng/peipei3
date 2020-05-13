@@ -16,6 +16,9 @@ import bgComp from "~/components/common/bg.vue";
 export default {
   components: {
     bgComp
+  },
+  created(){
+    console.log(this.$store.state)
   }
 };
 </script>

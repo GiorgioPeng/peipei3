@@ -36,7 +36,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    @media screen and (max-height: 720px) {
+    @media screen and (max-height: 750px) {
       justify-content: space-between;
       transform: scale(0.95);
     }
