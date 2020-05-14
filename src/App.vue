@@ -48,7 +48,7 @@ export default {
   transition: all 500ms;
   position: absolute;
 }
-.slide-right-enter {
+/* .slide-right-enter {
   opacity: 0;
   transform: translate3d(-100%, 30%, 0);
   transform-origin: bottom center;
@@ -70,6 +70,30 @@ export default {
   opacity: 0;
   transform: translate3d(-100%, 20%, 0);
   transform-origin: bottom center;
+  position: absolute;
+} */
+.slide-right-enter {
+  opacity: 0;
+  /* transform: translate3d(-100%, 20%, 0); */
+  transform: translateY(0);
+  position: absolute;
+}
+.slide-right-leave-active {
+  opacity: 0;
+  /* transform: translate3d(100%, 20%, 0); */
+  transform: translateY(30%);
+  position: absolute;
+}
+.slide-left-enter {
+  opacity: 0;
+  /* transform: translate3d(100%, 20%, 0); */
+  transform: translateY(0);
+  position: absolute;
+}
+.slide-left-leave-active {
+  opacity: 0;
+  /* transform: translate3d(-100%, 20%, 0); */
+  transform: translateY(30%);
   position: absolute;
 }
 </style>
