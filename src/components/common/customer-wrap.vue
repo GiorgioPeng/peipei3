@@ -40,6 +40,10 @@ export default {
       justify-content: space-between;
       transform: scale(0.95);
     }
+    @media screen and (max-height: 600px) {
+      justify-content: space-between;
+      transform: scale(0.90);
+    }
   }
 }
 </style>

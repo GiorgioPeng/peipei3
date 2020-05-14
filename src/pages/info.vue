@@ -70,7 +70,7 @@
                 class="form-item width80"
                 style="margin-top:30px;position:relative;z-index:999;"
                 v-model="$store.state['major/career']"
-                :max="50"
+                :max="5"
               >
                 <template #button>
                   <div class="custom-button">{{ $store.state['major/career'] }}</div>
