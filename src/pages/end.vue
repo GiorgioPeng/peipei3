@@ -17,9 +17,9 @@ export default {
   components: {
     bgComp
   },
-  created(){
-    console.log(this.$store.state)
-  }
+  // created(){
+  //   console.log(this.$store.state)
+  // }
 };
 </script>
 

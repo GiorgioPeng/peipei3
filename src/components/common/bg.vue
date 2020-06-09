@@ -9,13 +9,14 @@
     <div class="next">
       <router-link :to="{name:nextName}">
         <img src="/img/common/next.png" v-if="nextName&&!showSubmit" />
-        <img src="/img/common/submit.png" v-if="nextName&&showSubmit" />
+        <img src="/img/common/submit.png" @click="submitData()" v-if="nextName&&showSubmit" />
       </router-link>
       <!-- <router-link :to="{name:nextName}"> -->
     </div>
   </div>
 </template>
 <script>
+import submit from '~/api/submit'
 export default {
   props: {
     bgUrl: {
@@ -36,6 +37,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    }
+  },
+  methods:{
+    submitData(){
+      submit(this.$store.state)
     }
   }
 };

@@ -31,8 +31,8 @@ export default new Vuex.Store({
         "tasteWeight": 1,
         "temperature": [0, 0],
         "temperatureWeight": 1,
-        "sport": [],
-        "read": [],
-        "game": []
+        "sport": [false,false,false,false,false,false,false,false,false,false],
+        "read": [false,false,false,false,false,false,false,false,false,false],
+        "game": [false,false,false,false,false,false,false,false,false,false]
     }
 })
