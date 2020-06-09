@@ -70,6 +70,7 @@
                 class="form-item width80"
                 style="margin-top:30px;position:relative;z-index:999;"
                 v-model="$store.state['major/career']"
+                :min="1"
                 :max="5"
               >
                 <template #button>

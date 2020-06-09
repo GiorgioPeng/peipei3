@@ -90,6 +90,7 @@
       <van-slider
         bar-height="4px"
         active-color="#a2d8e6"
+        :min="1"
         :max="5"
         v-model="$store.state[data.weight]"
       >
