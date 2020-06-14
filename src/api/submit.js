@@ -11,7 +11,7 @@ const submit = async (data) => {
 
     // 午休 的映射
     data.is_nap = data.is_nap === 0 ? true : false
-
+ 
     // 吸烟 的映射
     data.smoke = data.smoke === 0 ? true : false
 
