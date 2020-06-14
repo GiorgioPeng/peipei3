@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import submit from '~/api/submit'
+import getAll from '~/api/submit'
 export default {
   props: {
     bgUrl: {
@@ -41,7 +41,7 @@ export default {
   },
   methods:{
     submitData(){
-      submit(this.$store.state)
+      getAll(this.$store.state)
     }
   }
 };

@@ -1,24 +1,24 @@
 export const hobbyConfigArr = [
     {
         title: "您是否有运动爱好",
-        model: "sport",
-        weight: "sportWeight",
+        model: "sports",
+        weight: "sports_weight",
         type: "hobby",
         bgUrl: "/img/06.hobby/1.png",
         yesImg: "/img/06.hobby/sport_yes.png"
     },
     {
         title: "您是否有读书爱好",
-        model: "read",
-        weight: "readWeight",
+        model: "books",
+        weight: "books_weight",
         type: "hobby",
         bgUrl: "/img/06.hobby/2.png",
         yesImg: "/img/06.hobby/read_yes.png"
     },
     {
         title: "您是否有游戏爱好",
-        model: "game",
-        weight: "gameWeight",
+        model: "games",
+        weight: "games_weight",
         count: 2,
         type: "hobby",
         bgUrl: "/img/06.hobby/3.png",
@@ -27,12 +27,12 @@ export const hobbyConfigArr = [
 ];
 
 export const hobitTitleMap = {
-    sport: "运动选项",
-    read: "书籍选项",
-    game: "游戏选项"
+    sports: "运动选项",
+    books: "书籍选项",
+    games: "游戏选项"
 }
 export const hobitDetailConfig = {
-    "sport":
+    "sports":
         [
             { name: "篮球", url: "/img/07.sport/basketball@3x.png" },
             { name: "乒乓球", url: "/img/07.sport/ping-pong@3x.png" },
@@ -45,7 +45,7 @@ export const hobitDetailConfig = {
             { name: "健身", url: "/img/07.sport/weightlifting@3x.png" },
             { name: "舞蹈/瑜伽", url: "/img/07.sport/ballet@3x.png" },
         ],
-    "read":
+    "books":
         [
             { name: "社会", url: "/img/08.read/1.png" },
             { name: "技术", url: "/img/08.read/2.png" },
@@ -58,7 +58,7 @@ export const hobitDetailConfig = {
             { name: "玄幻", url: "/img/08.read/9.png" },
             { name: "文学", url: "/img/08.read/10.png" },
         ],
-    "game":
+    "games":
         [
             { name: "和平精英", url: "/img/09.game/1.png" },
             { name: "王者荣耀", url: "/img/09.game/2.png" },

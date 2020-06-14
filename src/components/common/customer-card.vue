@@ -71,7 +71,7 @@
     <van-popup v-model="showPicker" position="bottom">
       <van-picker
         show-toolbar
-        :columns="isNight==='weakUpTime'?times1:times2"
+        :columns="isNight==='wake_time'?times1:times2"
         @confirm="onConfirm"
         @cancel="showPicker = false"
       />

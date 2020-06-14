@@ -15,11 +15,11 @@
               @click="handleSelectItem('school')"
             />
             <van-field
-              label="学号"
-              :label-width="40"
+              label="身份证"
+              :label-width="45"
               class="form-item"
-              v-model="$store.state.studentNumber"
-              placeholder="请输入学号"
+              v-model="$store.state.id"
+              placeholder="请输入身份证号码"
             />
             <van-field
               label="姓名"
@@ -58,23 +58,23 @@
                 @click="handleSelectItem('major')"
               />
               <van-field
-                v-model="$store.state.career"
+                v-model="$store.state.plan"
                 placeholder="职业规划"
                 right-icon="arrow-down"
                 class="form-item width80"
-                @click="handleSelectItem('career')"
+                @click="handleSelectItem('plan')"
               />
               <van-slider
                 bar-height="4px"
                 active-color="#a2d8e6"
                 class="form-item width80"
                 style="margin-top:30px;position:relative;z-index:999;"
-                v-model="$store.state['major/career']"
+                v-model="$store.state['plan_weight']"
                 :min="1"
                 :max="5"
               >
                 <template #button>
-                  <div class="custom-button">{{ $store.state['major/career'] }}</div>
+                  <div class="custom-button">{{ $store.state['plan_weight'] }}</div>
                 </template>
               </van-slider>
               <p style="font-size:12px;">请选择该项所占的权重</p>

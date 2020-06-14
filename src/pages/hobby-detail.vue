@@ -11,7 +11,7 @@
               @click="choiceItem(index)"
             >
               <img :src="item.url" />
-              <p v-if="type != 'read'">{{item.name}}</p>
+              <p v-if="type != 'books'">{{item.name}}</p>
               <div :class="[$store.state[type][index] ? 'mask' :'']"></div>
             </li>
           </ul>
