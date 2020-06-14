@@ -9,6 +9,9 @@ const submit = async (data) => {
     data.winter_temperature = data.temperature[1]
     delete data.temperature
 
+    // 性别 的映射
+    data.gender = data.gender==="boy"?true:false
+    
     // 运动 的映射
     {
         let tempString = ""
