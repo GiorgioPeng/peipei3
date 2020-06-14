@@ -1,5 +1,5 @@
 import url from './baseURL'
-const submit = (data) => {
+const submit = async (data) => {
     // 拿出 口味 酸辣, 并删除原始数据
     data.spicy = data.taste[0]
     data.sour = data.taste[1]
@@ -120,7 +120,20 @@ const submit = (data) => {
         delete data.games;
         data.games = tempString;
     }
-    console.log(url)
+
     console.log(data)
+    const result = await fetch(url+"/students/"+data.id
+    ,    {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Access-Control-Request-Method':'PUT',
+            'Content-Type': 'application/json'
+          })
+    }).then(e=>e.json())
+
+    // console.log(url)
+    console.log(result)
 }
 export default submit;
