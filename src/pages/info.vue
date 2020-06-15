@@ -14,12 +14,13 @@
               class="form-item"
               @click="handleSelectItem('school')"
             />
+            <!--袁系统叫改的-->
             <van-field
-              label="身份证"
+              label="英文ID"
               :label-width="45"
               class="form-item"
               v-model="$store.state.id"
-              placeholder="请输入身份证号码"
+              placeholder="请输入英文ID"
             />
             <van-field
               label="姓名"

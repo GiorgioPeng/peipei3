@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition :name="transitionName">
-      <router-view></router-view>
+      <router-view v-if="isRouterAlive"></router-view>
     </transition>
   </div>
 </template>
@@ -9,10 +9,24 @@
 <script>
 export default {
   name: "App",
+  methods: {
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(function() {
+         this.isRouterAlive = true
+      })
+    }
+  },
   data() {
     return {
-      transitionName: ""
+      transitionName: "",
+      isRouterAlive: true
     };
+  },
+  provide () {
+    return {
+      reload: this.reload
+    }
   },
   watch: {
     //使用watch 监听$router的变化

@@ -22,7 +22,7 @@
     <div v-if="data.type === 'slide'" class="slide-container" :style="itemObj">
       <div class="slide-item" v-for="(item,index) of data['choiceArr']" :key="index">
         <p>{{item[0]}}</p>
-        <van-slider
+        <!-- <van-slider
           bar-height="4px"
           active-color="#a2d8e6"
           :max="50"
@@ -31,7 +31,13 @@
           <template #button>
             <div class="van-slider-slot" style="width:12px;height:12px;"></div>
           </template>
-        </van-slider>
+        </van-slider> -->
+        <!-- 口味 -->
+        <div :class="$store.state[data.model][index]>=1?'click':'unclick'" @click="tasteClick(index,1)"></div>
+        <div :class="$store.state[data.model][index]>=2?'click':'unclick'" @click="tasteClick(index,2)"></div>
+        <div :class="$store.state[data.model][index]>=3?'click':'unclick'" @click="tasteClick(index,3)"></div>
+        <div :class="$store.state[data.model][index]>=4?'click':'unclick'" @click="tasteClick(index,4)"></div>
+        <div :class="$store.state[data.model][index]>=5?'click':'unclick'" @click="tasteClick(index,5)"></div>
         <p>{{item[1]}}</p>
       </div>
     </div>
@@ -87,7 +93,7 @@
     </van-popup>
     <!-- 衡量权重 -->
     <div class="weight-container">
-      <van-slider
+      <!-- <van-slider
         bar-height="4px"
         active-color="#a2d8e6"
         :min="1"
@@ -97,14 +103,22 @@
         <template #button>
           <div class="van-slider-slot">{{ $store.state[data.weight] }}</div>
         </template>
-      </van-slider>
-      <p>衡量权重</p>
+      </van-slider> -->
+      <div style="display:flex;justify-content:space-around;align-items:flex-end">
+        <img style="max-height:20px;width:10px" @click="clickWeight(1)" :src="$store.state[data.weight]==1?'/img/common/weightSideClick.png':'/img/common/weightSideUnclick.png'"/>
+        <img style="max-height:15px;width:10px" @click="clickWeight(2)" :src="$store.state[data.weight]==2?'/img/common/weightMiddleClick.png':'/img/common/weightMiddleUnclick.png'"/>
+        <img style="max-height:10px;width:10px" @click="clickWeight(3)" :src="$store.state[data.weight]==3?'/img/common/weightCenterClick.png':'/img/common/weightCenterUnclick.png'"/>
+        <img style="max-height:15px;width:10px" @click="clickWeight(4)" :src="$store.state[data.weight]==4?'/img/common/weightMiddleClick.png':'/img/common/weightMiddleUnclick.png'"/>
+        <img style="max-height:20px;width:10px" @click="clickWeight(5)" :src="$store.state[data.weight]==5?'/img/common/weightSideClick.png':'/img/common/weightSideUnclick.png'"/>
+      </div>
+      <p style="margin-top:5px;color:#555">衡量权重</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  inject: ['reload'],
   props: {
     data: {
       type: Object,
@@ -177,6 +191,15 @@ export default {
       this.$store.state[this.data.model] = time;
       this.showPicker = false;
     },
+    clickWeight(value){
+      this.$store.state[this.data.weight] = value;
+      // this.reload();
+    },
+    tasteClick(index,value){
+      // console.log(this.$store.state[this.data.model][index])
+      this.$store.state[this.data.model][index] = value;
+      this.reload();
+    },
     handleClickRadio(index, type) {
       if (type) {
         this.$store.state[this.data.model] = [];
@@ -185,7 +208,7 @@ export default {
       }
     },
     handleNumberPickerChange(value) {
-      console.log(value);
+      // console.log(value);
       this.$store.state[this.data.model][this.activeIndex] = value;
       this.showNumberPicker = false;
     }
@@ -207,11 +230,12 @@ export default {
     left: 12px;
   }
   .weight-container {
+    height:45px;
     width: 80%;
     position: absolute;
     bottom: -35px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -22%);
 
     & > p {
       font-size: 12px;
@@ -231,6 +255,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     overflow: hidden;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.3)
   }
   .radio-item {
     width: 80%;
@@ -266,6 +291,7 @@ export default {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.3);
     .slide-item {
       display: flex;
       width: 80%;
@@ -286,6 +312,7 @@ export default {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.3);
     div {
       flex: 0 0 50%;
       height: 30px;
@@ -300,6 +327,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.3);
     & > div {
       display: flex;
       justify-content: flex-start;
@@ -323,5 +351,21 @@ export default {
       }
     }
   }
+}
+.click{
+  background-image: url("/img/common/tasteClick.png");
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  width: 35px;
+  height:10px;
+  margin-left:2px;
+}
+.unclick{
+  background-image: url("/img/common/tasteUnclick.png");
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  width: 35px;
+  height:10px;
+  margin-left:2px;
 }
 </style>
