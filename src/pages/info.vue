@@ -8,15 +8,18 @@
             <van-field
               v-model="$store.state.school"
               label="学校"
+              label-align="center"
               :label-width="40"
               placeholder="请选择学校"
               right-icon="arrow-down"
               class="form-item"
-              @click="handleSelectItem('school')"
+              readonly
+              @click.prevent="handleSelectItem('school')"
             />
             <!--袁系统叫改的-->
             <van-field
               label="英文ID"
+              label-align="center"
               :label-width="45"
               class="form-item"
               v-model="$store.state.id"
@@ -24,9 +27,10 @@
             />
             <van-field
               label="姓名"
+              label-align="center"
               :label-width="40"
               class="form-item"
-              style="width:80%;"
+              placeholder="请输入姓名"
               v-model="$store.state.name"
             />
             <van-field
@@ -34,6 +38,7 @@
               class="form-item"
               style="width:80%;position:ralative;z-index:999;"
               label="性别"
+              label-align="center"
               :label-width="40"
             >
               <template #input>
@@ -56,14 +61,16 @@
                 right-icon="arrow-down"
                 class="form-item width80"
                 style="position:relative;z-index:999;"
-                @click="handleSelectItem('major')"
+                readonly
+                @click.prevent="handleSelectItem('major')"
               />
               <van-field
                 v-model="$store.state.plan"
                 placeholder="职业规划"
                 right-icon="arrow-down"
                 class="form-item width80"
-                @click="handleSelectItem('plan')"
+                readonly
+                @click.prevent="handleSelectItem('plan')"
               />
               <van-slider
                 bar-height="4px"
