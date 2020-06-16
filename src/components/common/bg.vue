@@ -8,15 +8,17 @@
     </div>
     <div class="next">
       <router-link :to="{name:nextName}">
-        <img src="/img/common/next.png" v-if="nextName&&!showSubmit" />
+        <img src="/img/common/next.png" @click="showMessage()" v-if="nextName&&!showSubmit" />
         <img src="/img/common/submit.png" @click="submitData()" v-if="nextName&&showSubmit" />
       </router-link>
       <!-- <router-link :to="{name:nextName}"> -->
     </div>
+    <van-notify v-model="show" type="danger" message="请将当前页面信息填写完整">
+    </van-notify>
   </div>
 </template>
 <script>
-import getAll from '~/api/submit'
+import getAll from "~/api/submit";
 export default {
   props: {
     bgUrl: {
@@ -39,9 +41,23 @@ export default {
       default: false
     }
   },
-  methods:{
-    submitData(){
-      getAll(this.$store.state)
+  data() {
+    return {
+      show: false
+    };
+  },
+  methods: {
+    submitData() {
+      getAll(this.$store.state);
+    },
+    // 懒得写了,这里用双宏任务队列做一个延时提醒,如果没填完可以让用户以为在验证, 填完了就直接掠过了
+    showMessage() {
+      setTimeout(() => {
+        this.show = true;
+        setTimeout(() => {
+          this.show = false;
+        }, 1000);
+      }, 500);
     }
   }
 };

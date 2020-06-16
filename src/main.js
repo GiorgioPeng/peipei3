@@ -11,7 +11,7 @@ import store from "./store/index.js"
 
 
 // 引入vant组件
-import { Button, Field, CellGroup, ActionSheet, RadioGroup, Radio, Slider, DatetimePicker,Popup,Picker,Icon } from 'vant';
+import { Button, Notify, Field, CellGroup, ActionSheet, RadioGroup, Radio, Slider, DatetimePicker,Popup,Picker,Icon } from 'vant';
 
 Vue.use(Button)
 Vue.use(Field)
@@ -24,6 +24,7 @@ Vue.use(DatetimePicker)
 Vue.use(Popup)
 Vue.use(Picker)
 Vue.use(Icon)
+Vue.use(Notify)
 
 Vue.config.productionTip = false
 

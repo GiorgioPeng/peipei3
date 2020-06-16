@@ -1,6 +1,6 @@
 import Router from "vue-router";
 import Vue from "vue";
-
+import Data from '@/store/index'
 // import Test from "./components/hello.vue"
 const Start = (resolve) => require(["~/pages/start.vue"], resolve)
 const Info = resolve => require(["~/pages/info.vue"], resolve)
@@ -10,9 +10,9 @@ const Habit2 = resolve => require(["~/pages/habit2.vue"], resolve)
 const Hobby = resolve => require(["~/pages/hobby.vue"], resolve)
 const HobbyDetail = resolve => require(["~/pages/hobby-detail.vue"], resolve)
 const End = resolve => require(["~/pages/end.vue"], resolve)
-
+const data = Data.state
 Vue.use(Router);
-export default new Router({
+const router = new Router({
     mode: "history",
     routes: [
         {
@@ -71,7 +71,7 @@ export default new Router({
             }
         },
         {
-            path: "hobbydetail",
+            path: "/hobbydetail",
             name: "hobbyDetail",
             component: HobbyDetail,
             meta: {
@@ -79,7 +79,7 @@ export default new Router({
             }
         },
         {
-            path: "end",
+            path: "/end",
             name: "end",
             component: End,
             meta: {
@@ -88,3 +88,29 @@ export default new Router({
         }
     ]
 })
+// 加了个路由守卫,没填写完的不能进入下一个页面
+router.beforeEach((to, from, next) => {
+    console.log(to.name)
+    
+    if(to.name==='sleep'){
+        if(data.school&&data.id&&data.name&&data.gender&&data.major&&data.plan){
+            next();
+        }
+        return;
+    }
+    if(to.name==='habit1'){
+        if(data.wake_time&&data.sleep_time){
+            next();
+        }
+        return;
+    }
+    if(to.name==='habit2'){
+        if(data.temperature[0]!==0&&data.temperature[1]!==0){
+            next();
+        }
+        return;
+    }
+    next();
+    
+})
+export default router;

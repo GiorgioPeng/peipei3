@@ -105,11 +105,11 @@
         </template>
       </van-slider> -->
       <div style="display:flex;justify-content:space-around;align-items:flex-end">
-        <img style="max-height:20px;width:10px" @click="clickWeight(1)" :src="$store.state[data.weight]==1?'/img/common/weightSideClick.png':'/img/common/weightSideUnclick.png'"/>
+        <img style="max-height:10px;width:10px" @click="clickWeight(1)" :src="$store.state[data.weight]==1?'/img/common/weightSideClick.png':'/img/common/weightSideUnclick.png'"/>
         <img style="max-height:15px;width:10px" @click="clickWeight(2)" :src="$store.state[data.weight]==2?'/img/common/weightMiddleClick.png':'/img/common/weightMiddleUnclick.png'"/>
-        <img style="max-height:10px;width:10px" @click="clickWeight(3)" :src="$store.state[data.weight]==3?'/img/common/weightCenterClick.png':'/img/common/weightCenterUnclick.png'"/>
-        <img style="max-height:15px;width:10px" @click="clickWeight(4)" :src="$store.state[data.weight]==4?'/img/common/weightMiddleClick.png':'/img/common/weightMiddleUnclick.png'"/>
-        <img style="max-height:20px;width:10px" @click="clickWeight(5)" :src="$store.state[data.weight]==5?'/img/common/weightSideClick.png':'/img/common/weightSideUnclick.png'"/>
+        <img style="max-height:20px;width:10px" @click="clickWeight(3)" :src="$store.state[data.weight]==3?'/img/common/weightCenterClick.png':'/img/common/weightCenterUnclick.png'"/>
+        <img style="max-height:25px;width:10px" @click="clickWeight(4)" :src="$store.state[data.weight]==4?'/img/common/weightMiddleClick.png':'/img/common/weightMiddleUnclick.png'"/>
+        <img style="max-height:30px;width:10px" @click="clickWeight(5)" :src="$store.state[data.weight]==5?'/img/common/weightSideClick.png':'/img/common/weightSideUnclick.png'"/>
       </div>
       <p style="margin-top:5px;color:#555">衡量权重</p>
     </div>
@@ -235,7 +235,7 @@ export default {
     position: absolute;
     bottom: -35px;
     left: 50%;
-    transform: translate(-50%, -22%);
+    transform: translate(-50%, -50%);
 
     & > p {
       font-size: 12px;
